@@ -34,3 +34,23 @@ This project focuses on analyzing user reviews for the top-selling product on Di
 ## Notes
 Refer to the [Hazm Package](https://github.com/sobhe/hazm) documentation for additional details on Persian NLP capabilities.
 
+### Results and Conclusion
+
+The following results were achieved for keyword extraction and sentiment classification:
+
+1. **Keyword Extraction and Embedding**:
+   - Extracted keywords were saved to `keywords.csv` for analysis and future reference.
+   - Using FastText word embeddings (`fasttext_skipgram_300.bin`), each keyword was transformed into a 300-dimensional vector.
+   - These vectors were aggregated to form a 1500-dimensional feature vector for each comment.
+
+2. **Data Preparation for Model Training**:
+   - The final dataset had 413 samples, with each feature vector reshaped to dimensions `(413, 1500)` for compatibility with machine learning models.
+   - Labels were stored as `y`, with shapes `(413,)`, representing the sentiment of each comment.
+
+3. **KNN Model Training and Evaluation**:
+   - After splitting the data with an 80-20 train-test ratio, a K-Nearest Neighbors (KNN) model was trained with `n_neighbors=5`.
+   - Model performance was evaluated, achieving:
+     - **Training Accuracy**: 91.5%
+     - **Testing Accuracy**: 91.6%
+
+This high accuracy on both training and testing sets indicates that the model effectively learned the patterns in the comment data, showing strong generalization for sentiment classification.
